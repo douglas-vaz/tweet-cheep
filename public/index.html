@@ -22,12 +22,15 @@
 	var pause = document.getElementById('buttonPause');
 	var inputTag = document.getElementById('inputTag');
 
+	var hide = false;
 	pause.onclick = function() {
 		socket.emit('stopStream', '');
+		hide = true;
 	};
 
 	var fetch = document.getElementById('buttonFetch');
 	fetch.onclick = function() {
+		hide = false;
 		var tag = inputTag.value;
 		console.log(tag);
 		if(tag.length > 0){

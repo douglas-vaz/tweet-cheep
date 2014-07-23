@@ -36,9 +36,24 @@ blockquote.twitter-tweet a[href^="https://twitter.com"] {
 /** React animations */
 .tweet-enter {
   opacity: 0.01;
-  transition: opacity 2s ease-in;
+  transition: opacity 0.5s ease-in;
+  -webkit-transition: opacity 0.5s ease-in;
+  -moz-transition: opacity 0.5s ease-in;
+  -o-transition: opacity 0.5s ease-in;
 }
 
 .tweet-enter.tweet-enter-active {
   opacity: 1;
+}
+
+.tweet-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+  -webkit-transition: opacity .5s ease-in;
+  -moz-transition: opacity .5s ease-in;
+  -o-transition: opacity .5s ease-in;
+}
+
+.tweet-leave.tweet-leave-active {
+  opacity: 0.01;
 }
