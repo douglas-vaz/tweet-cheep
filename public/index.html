@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="tweet-style.css">
+</head>
+<body>
+<div class="header">
+	<input type="text" id="inputTag" />
+	<input type="button" value="Fetch" id="buttonFetch" />
+	<input type="button" value="Pause" id="buttonPause" />
+</div>
+
+<div id="content"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+<script src="react/react-with-addons.min.js"></script>
+<script src="react/JSXTransformer.js"></script>
+
+<script>
+	var socket = io.connect('http://localhost');
+	var pause = document.getElementById('buttonPause');
+	var inputTag = document.getElementById('inputTag');
+
+	pause.onclick = function() {
+		socket.emit('stopStream', '');
+	};
+
+	var fetch = document.getElementById('buttonFetch');
+	fetch.onclick = function() {
+		var tag = inputTag.value;
+		console.log(tag);
+		if(tag.length > 0){
+			if(tag[0] == '#'){ tag = tag.substring(1); }
+			socket.emit('startStream', tag);
+		}
+	};
+</script>
+<script type="text/jsx" src="components.js"></script>
+
+</body>
+</html>
